@@ -13,8 +13,12 @@ Rails uses Active Record as a primary class to handle the communication between 
 
 The Controller layer is responsible for handling incoming HTTP requests and providing a suitable response. Usually this means returning HTML, but Rails controllers can also generate XML, JSON, PDFs, mobile-specific views, and more. 
 
-### Tue 21, July 2020 *[Reading topic or title]*
-orem ipsum dolor sit amet consectetur adipiscing elit nulla consequat, taciti arcu volutpat mattis blandit primis natoque feugiat posuere, elementum curabitur mollis enim velit vulputate urna ut. Ultrices nisl nam nunc netus himenaeos magnis phasellus...
+### Fry 24, July 2020 *[Ruby on Rails modules]*
+RoR has some main modules/classes such as:
+- **ActionCable:** integrates WebSockets with the rest of your Rails application. It allows for real-time features to be written in Ruby in the same style and form as the rest of your Rails application, while still being performant and scalable.
+- **ActionMailer:** Allows you to send emails from your application using mailer classes and views.
+- **ActiveJob:** Framework for declaring jobs and making them run on a variety of queuing backends. These jobs can be everything from regularly scheduled clean-ups, to billing charges, to mailings.
+- **ActiveModel:** Library that containis various modules used in developing classes that need some features present on Active Record. Some of these modules are explained below.
 
 ### Wed 21, July 2020 *[Reading topic or title]*
 orem ipsum dolor sit amet consectetur adipiscing elit nulla consequat, taciti arcu volutpat mattis blandit primis natoque feugiat posuere, elementum curabitur mollis enim velit vulputate urna ut. Ultrices nisl nam nunc netus himenaeos magnis phasellus...
