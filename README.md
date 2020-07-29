@@ -20,5 +20,9 @@ RoR has some main modules/classes such as:
 - **ActiveJob:** Framework for declaring jobs and making them run on a variety of queuing backends. These jobs can be everything from regularly scheduled clean-ups, to billing charges, to mailings.
 - **ActiveModel:** Library that containis various modules used in developing classes that need some features present on Active Record. Some of these modules are explained below.
 
-### Wed 21, July 2020 *[Reading topic or title]*
-orem ipsum dolor sit amet consectetur adipiscing elit nulla consequat, taciti arcu volutpat mattis blandit primis natoque feugiat posuere, elementum curabitur mollis enim velit vulputate urna ut. Ultrices nisl nam nunc netus himenaeos magnis phasellus...
+### Mon 27, July 2020 *[Ruby on Rails modules part 2]*
+- **ActionPack:** Action Pack is a framework for handling and responding to web requests. It provides mechanisms for routing, defining controllers that implement actions, and generating responses by rendering views. It consists on some modules such as:
+  - ActionDispatch: parses information about the web request, handles routing as defined by the user, and does advanced processing related to HTTP such as MIME-type negotiation, decoding parameters in POST, PATCH, or PUT bodies, handling HTTP caching logic, cookies and sessions.
+  - ActionController: provides a base controller class that can be subclassed to implement filters and actions to handle requests. The result of an action is typically content generated from views.
+
+Dispatch functionality is activated by default and Action View rendering is implicitly triggered by Action Controller.
