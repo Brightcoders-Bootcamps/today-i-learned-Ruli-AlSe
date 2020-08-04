@@ -1,4 +1,4 @@
-# Today I Learned by *[Raul Alejandro Almanza Serrano]*
+# Today I Learned by *Raul Alejandro Almanza Serrano*
 
 Ruby and Rails official documentation reading personal journal
 
@@ -54,3 +54,11 @@ Dispatch functionality is activated by default and Action View rendering is impl
   Files can be uploaded from the server to the cloud or directly from the client to the cloud.
 
   Image files can furthermore be transformed using on-demand variants for quality, aspect ratio, size, or any other MiniMagick or Vips supported transformation.
+
+## Mon 3, August 2020 *[AbstractController]*
+- **ActionNotFound:** Raised when a non-existing controller action is triggered.
+- **Base:** is a low-level API. Nobody should be using it directly, and subclasses (like ActionController::Base) are expected to provide their own render method, since rendering means different things depending on the context.
+- **Calbacks:** Abstract Controller provides hooks during the life cycle of a controller action. Callbacks allow you to trigger logic during this cycle. Calling the same callback multiple times will overwrite previous callback definitions.
+- **UrlFor:** Includes url_for into the host class (e.g. an abstract controller or mailer). The class has to provide a RouteSet by implementing the _routes methods. Otherwise, an exception will be raised.
+
+  Note that this module is completely decoupled from HTTP - the only requirement is a valid _routes implementation.
