@@ -71,3 +71,9 @@ Dispatch functionality is activated by default and Action View rendering is impl
   Channel instances are long-lived. A channel object will be instantiated when the cable consumer becomes a subscriber, and then lives until the consumer disconnects. This may be seconds, minutes, hours, or even days.
 
   Unlike subclasses of ActionController::Base, channels do not follow a RESTful constraint form for their actions. Instead, Action Cable operates through a remote-procedure call model. You can declare any public method on the channel (optionally taking a data argument), and this method is automatically exposed as callable to the client.
+
+
+## Wed 5, August 2020 *[ ActionCable part 2 ]*
+- **Channel Naming:** Returns the name of the channel, underscored, without the Channel ending. If the channel is in a namespace, then the namespaces are represented by single colon separators in the channel name.
+- **Channel PeriodicTimers:** Periodically performs a task on the channel, like updating an online user counter, polling a backend for new status messages, sending regular “heartbeat” messages, or doing some internal work and giving progress updates.
+- **Channel Streams:** allow channels to route broadcastings to the subscriber. A broadcasting is, as discussed elsewhere, a pubsub queue where any data placed into it is automatically sent to the clients that are connected at that time. It's purely an online queue, though. If you're not streaming a broadcasting at the very moment it sends out an update, you will not get that update, even if you connect after it has been sent.
