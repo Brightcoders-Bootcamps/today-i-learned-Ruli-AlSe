@@ -77,3 +77,12 @@ Dispatch functionality is activated by default and Action View rendering is impl
 - **Channel Naming:** Returns the name of the channel, underscored, without the Channel ending. If the channel is in a namespace, then the namespaces are represented by single colon separators in the channel name.
 - **Channel PeriodicTimers:** Periodically performs a task on the channel, like updating an online user counter, polling a backend for new status messages, sending regular “heartbeat” messages, or doing some internal work and giving progress updates.
 - **Channel Streams:** allow channels to route broadcastings to the subscriber. A broadcasting is, as discussed elsewhere, a pubsub queue where any data placed into it is automatically sent to the clients that are connected at that time. It's purely an online queue, though. If you're not streaming a broadcasting at the very moment it sends out an update, you will not get that update, even if you connect after it has been sent.
+
+## Thu 6, August 2020 *[ ActionController part 1 ]*
+- **Api:** API Controller is a lightweight version of ActionController::Base, created for applications that don't require all functionalities that a complete Rails controller provides, allowing you to create controllers with just the features that you need for API only applications.
+  
+  Normally, ApplicationController is the only controller that inherits from ActionController::API. All other controllers in turn inherit from ApplicationController.
+  
+  - **Renders:** The default API Controller stack includes all renderers, which means you can use render :json and brothers freely in your controllers. Keep in mind that templates are not going to be rendered, so you need to ensure your controller is calling either render or redirect_to in all actions, otherwise it will return 204 No Content.
+  - **Redirects:** Redirects are used to move from one action to another. You can use the redirect_to method in your controllers in the same way as in ActionController::Base.
+  - **Adding New Behavior:** In some scenarios you may want to add back some functionality provided by ActionController::Base that is not present by default in ActionController::API, for instance MimeResponds. This module gives you the respond_to method. Adding it is quite simple, you just need to include the module in a specific controller or in ApplicationController in case you want it available in your entire application.
