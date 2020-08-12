@@ -107,3 +107,10 @@ Dispatch functionality is activated by default and Action View rendering is impl
 - **DataStreaming:** Methods for sending arbitrary data and for streaming files to the browser, instead of rendering.
 - **DefaultHeaders:** Allows configuring default headers that will be automatically merged into each response.
 - **EtagWithFlash:** When you're using the flash, it's generally used as a conditional on the view. This means the content of the view depends on the flash. Which in turn means that the ETag for a response should be computed with the content of the flash in mind. This does that by including the content of the flash as a component in the ETag that's generated for a response.
+
+## Wed 12, August 2020 *[ ActionController part 4 ]*
+- **EtagWithTemplateDigest:** When our views change, they should bubble up into HTTP cache freshness and bust browser caches. So the template digest for the current action is automatically included in the ETag.
+- **FormBuilder:** Override the default form builder for all views rendered by this controller and any of its descendants. Accepts a subclass of ActionView::Helpers::FormBuilder.
+- **Helpers:** The Rails framework provides a large number of helpers for working with assets, dates, forms, numbers and model objects, to name a few. These helpers are available to all templates by default.
+
+  In addition to using the standard template helpers provided, creating custom helpers to extract complicated logic or reusable functionality is strongly encouraged. By default, each controller will include all helpers. These helpers are only accessible on the controller through #helpers
