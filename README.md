@@ -99,3 +99,11 @@ Dispatch functionality is activated by default and Action View rendering is impl
   - **Renders:** Action Controller sends content to the user by using one of five rendering methods. The most versatile and common is the rendering of a template. Included in the Action Pack is the Action View, which enables rendering of ERB templates. It's automatically configured. 
   - **Redirects:** Redirects are used to move from one action to another. For example, after a create action, which stores a blog entry to the database, we might like to show the user the new entry.
   - **multiple redirects:** An action may contain only a single render or a single redirect. Attempting to try to do either again will result in a DoubleRenderError.
+
+# Week 4
+
+## Tue 11, August 2020 *[ ActionController part 3 ]*
+- **Caching:** Caching is a cheap way of speeding up slow applications by keeping the result of calculations, renderings, and database calls around for subsequent requests.
+- **DataStreaming:** Methods for sending arbitrary data and for streaming files to the browser, instead of rendering.
+- **DefaultHeaders:** Allows configuring default headers that will be automatically merged into each response.
+- **EtagWithFlash:** When you're using the flash, it's generally used as a conditional on the view. This means the content of the view depends on the flash. Which in turn means that the ETag for a response should be computed with the content of the flash in mind. This does that by including the content of the flash as a component in the ETag that's generated for a response.
