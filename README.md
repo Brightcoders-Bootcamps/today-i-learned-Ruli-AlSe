@@ -125,3 +125,8 @@ Dispatch functionality is activated by default and Action View rendering is impl
   For all other controllers, we use these heuristics to decide whether to render a template, raise an error for a missing template, or respond with 204 No Content:
 
   First, if we DO find a template, it's rendered. Template lookup accounts for the action name, locales, format, variant, template handlers, and more (see render for details).
+
+## Fri 14, August 2020 *[ ActionController part 6 ]*
+- **Instrumentation:** Adds instrumentation to several ends in ActionController::Base. It also provides some hooks related with process_action. This allows an ORM like Active Record and/or DataMapper to plug in ActionController and show related information.
+- **Live:** There are a few caveats with this module. You cannot write headers after the response has been committed (Response#committed? will return truthy). Calling write or close on the response stream will cause the response object to be committed. Make sure all headers are set before calling write or close on your stream.
+  - **SSE:** This class provides the ability to write an SSE (Server Sent Event) to an IO stream. The class is initialized with a stream and can be used to either write a JSON string or an object which can be converted to JSON.
