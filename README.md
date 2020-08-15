@@ -114,3 +114,14 @@ Dispatch functionality is activated by default and Action View rendering is impl
 - **Helpers:** The Rails framework provides a large number of helpers for working with assets, dates, forms, numbers and model objects, to name a few. These helpers are available to all templates by default.
 
   In addition to using the standard template helpers provided, creating custom helpers to extract complicated logic or reusable functionality is strongly encouraged. By default, each controller will include all helpers. These helpers are only accessible on the controller through #helpers
+
+## Thu 13, August 2020 *[ ActionController part 5 ]*
+- **HttpAuthentication::Digest:**  The authenticate_or_request_with_http_digest block must return the user's password or the ha1 digest hash so the framework can appropriately hash to check the user's credentials. Returning nil will cause authentication to fail.
+
+  Storing the ha1 hash: MD5(username:realm:password), is better than storing a plain password. If the password file or database is compromised, the attacker would be able to use the ha1 hash to authenticate as the user at this realm, but would not have the user's password to try using at other sites.
+- **ImplicitRender:** Handles implicit rendering for a controller action that does not explicitly respond with render, respond_to, redirect, or head.
+  For API controllers, the implicit response is always 204 No Content.
+
+  For all other controllers, we use these heuristics to decide whether to render a template, raise an error for a missing template, or respond with 204 No Content:
+
+  First, if we DO find a template, it's rendered. Template lookup accounts for the action name, locales, format, variant, template handlers, and more (see render for details).
