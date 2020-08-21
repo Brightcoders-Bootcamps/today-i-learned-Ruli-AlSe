@@ -130,3 +130,9 @@ Dispatch functionality is activated by default and Action View rendering is impl
 - **Instrumentation:** Adds instrumentation to several ends in ActionController::Base. It also provides some hooks related with process_action. This allows an ORM like Active Record and/or DataMapper to plug in ActionController and show related information.
 - **Live:** There are a few caveats with this module. You cannot write headers after the response has been committed (Response#committed? will return truthy). Calling write or close on the response stream will cause the response object to be committed. Make sure all headers are set before calling write or close on your stream.
   - **SSE:** This class provides the ability to write an SSE (Server Sent Event) to an IO stream. The class is initialized with a stream and can be used to either write a JSON string or an object which can be converted to JSON.
+
+# Week 5
+
+## Mon 17, August 2020 *[ ActionController part 6 ]*
+- **MimeResponds:** The public controller methods respond_to may be called with a block that is used to define responses to different mime-types. In this usage, the argument passed to the block (format above) is an instance of the ActionController::MimeResponds::Collector class. This object serves as a container in which available responses can be stored by calling any of the dynamically generated, mime-type-specific methods such as html, xml etc on the Collector. Each response is represented by a corresponding block if present.
+- **Parameters:** Allows you to choose which attributes should be permitted for mass updating and thus prevent accidentally exposing that which shouldn't be exposed. Provides two methods for this purpose: require and permit. The former is used to mark parameters as required. 
