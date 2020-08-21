@@ -136,3 +136,8 @@ Dispatch functionality is activated by default and Action View rendering is impl
 ## Mon 17, August 2020 *[ ActionController part 6 ]*
 - **MimeResponds:** The public controller methods respond_to may be called with a block that is used to define responses to different mime-types. In this usage, the argument passed to the block (format above) is an instance of the ActionController::MimeResponds::Collector class. This object serves as a container in which available responses can be stored by calling any of the dynamically generated, mime-type-specific methods such as html, xml etc on the Collector. Each response is represented by a corresponding block if present.
 - **Parameters:** Allows you to choose which attributes should be permitted for mass updating and thus prevent accidentally exposing that which shouldn't be exposed. Provides two methods for this purpose: require and permit. The former is used to mark parameters as required. 
+
+## Tue 18, August 2020 *[ ActionController part 7 ]*
+- **ParamsWrapper:** Wraps the parameters hash into a nested hash. This will allow clients to submit requests without having to specify any root elements. This functionality is enabled in config/initializers/wrap_parameters.rb and can be customized.
+  On Active Record models with no :include or :exclude option set, it will only wrap the parameters returned by the class method attribute_names.
+- **Rescue:** This module is responsible for providing rescue_from helpers to controllers and configuring when detailed exceptions must be shown.
