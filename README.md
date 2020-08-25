@@ -141,3 +141,11 @@ Dispatch functionality is activated by default and Action View rendering is impl
 - **ParamsWrapper:** Wraps the parameters hash into a nested hash. This will allow clients to submit requests without having to specify any root elements. This functionality is enabled in config/initializers/wrap_parameters.rb and can be customized.
   On Active Record models with no :include or :exclude option set, it will only wrap the parameters returned by the class method attribute_names.
 - **Rescue:** This module is responsible for providing rescue_from helpers to controllers and configuring when detailed exceptions must be shown.
+
+## Wed 19, August 2020 *[ ActionController part 8 ]*
+- **Streaming:** By default, Rails renders views by first rendering the template and then the layout. The response is sent to the client after the whole template is rendered, all queries are made, and the layout is processed.
+  Streaming inverts the rendering flow by rendering the layout first and streaming each part of the layout as they are processed. This allows the header of the HTML (which is usually in the layout) to be streamed back to client very quickly, allowing JavaScripts and stylesheets to be loaded earlier than usual.
+  Streaming may be considered to be overkill for lightweight actions like new or edit. The real benefit of streaming is on expensive actions that, for example, do a lot of queries on the database.
+  In such actions, you want to delay queries execution as much as you can.
+
+- **Strong Parameters:** It provides an interface for protecting attributes from end-user assignment. This makes Action Controller parameters forbidden to be used in Active Model mass assignment until they have been explicitly enumerated.
