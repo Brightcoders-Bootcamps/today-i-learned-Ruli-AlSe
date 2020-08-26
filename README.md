@@ -164,8 +164,16 @@ Dispatch functionality is activated by default and Action View rendering is impl
 - **DebugLocks:** This middleware can be used to diagnose deadlocks in the autoload interlock.
 - **FileHandler:** This middleware returns a file's contents from disk in the body response. When initialized, it can accept optional HTTP headers, which will be set when a response containing a file's contents is delivered. This middleware will render the file specified in env["PATH_INFO"] where the base path is in the root directory. 
 
+# Week 6
+
 ## Mon 24, August 2020 *[ ActionDispatch part 3 ]*
 - **Flash:** The flash provides a way to pass temporary primitive-types (String, Array, Hash) between actions. Anything you place in the flash will be exposed to the very next action and then cleared out. This is a great way of doing notices and alerts, such as a create action that sets flash[:notice] = "Post successfully created" before redirecting to a display action that can then expose the flash to its template. Actually, that exposure is automatically done.
 
 - **HostAuthorization:** This middleware guards from DNS rebinding attacks by explicitly permitting the hosts a request can be sent to.
   When a request comes to an unauthorized host, the response_app application will be executed and rendered. If no response_app is given, a default one will run, which responds with +403 Forbidden+.
+
+## Tue 25, August 2020 *[ ActionDispatch part 4 ]*
+- **Http:** This module works with this other submodules...
+  - **FilterParameters:** Allows you to specify sensitive parameters which will be replaced from the request log by looking in the query string of the request and all sub-hashes of the params hash to filter. Filtering only certain sub-keys from a hash is possible by using the dot notation: 'credit_card.number'. If a block is given, each key and value of the params hash and all sub-hashes are passed to it, where the value or the key can be replaced using String#replace or similar methods.
+  - **Headers:** Provides access to the request's HTTP headers from the environment. Note that when headers are mapped to CGI-like variables by the Rack server, both dashes and underscores are converted to underscores. This ambiguity cannot be resolved at this stage anymore. Both underscores and dashes have to be interpreted as if they were originally sent as dashes.
+  - **UploadedFile:** Models uploaded files. The actual file is accessible via the tempfile accessor, though some of its interface is available directly for convenience. Uploaded files are temporary files whose lifespan is one request. When the object is finalized Ruby unlinks the file, so there is no need to clean them with a separate maintenance task.
