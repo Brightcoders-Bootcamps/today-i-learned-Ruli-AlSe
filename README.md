@@ -163,3 +163,9 @@ Dispatch functionality is activated by default and Action View rendering is impl
 - **DebugExceptions:** This middleware is responsible for logging exceptions and showing a debugging page in case the request is local.
 - **DebugLocks:** This middleware can be used to diagnose deadlocks in the autoload interlock.
 - **FileHandler:** This middleware returns a file's contents from disk in the body response. When initialized, it can accept optional HTTP headers, which will be set when a response containing a file's contents is delivered. This middleware will render the file specified in env["PATH_INFO"] where the base path is in the root directory. 
+
+## Mon 24, August 2020 *[ ActionDispatch part 3 ]*
+- **Flash:** The flash provides a way to pass temporary primitive-types (String, Array, Hash) between actions. Anything you place in the flash will be exposed to the very next action and then cleared out. This is a great way of doing notices and alerts, such as a create action that sets flash[:notice] = "Post successfully created" before redirecting to a display action that can then expose the flash to its template. Actually, that exposure is automatically done.
+
+- **HostAuthorization:** This middleware guards from DNS rebinding attacks by explicitly permitting the hosts a request can be sent to.
+  When a request comes to an unauthorized host, the response_app application will be executed and rendered. If no response_app is given, a default one will run, which responds with +403 Forbidden+.
