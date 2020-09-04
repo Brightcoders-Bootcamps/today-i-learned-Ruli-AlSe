@@ -212,3 +212,6 @@ Dispatch functionality is activated by default and Action View rendering is impl
 ## Thu September 3, 2020 *[ ActionDispatch part 9 ]*
 - **Static:** This middleware will attempt to return the contents of a file's body from disk in the response. If a file is not found on disk, the request will be delegated to the application stack. This middleware is commonly initialized to serve assets from a server's public/ directory.
 - **TestResponse:** Integration test methods such as ActionDispatch::Integration::Session#get and ActionDispatch::Integration::Session#post return objects of class TestResponse, which represent the HTTP response results of the requested controller actions.
+
+## Fri September 4, 2020 *[ ActionMailbox part 1 ]*
+- **Base:** The base class for all application mailboxes. Not intended to be inherited from directly. Inherit from ApplicationMailbox instead, as that's where the app-specific routing is configured. Application mailboxes need to overwrite the #process method, which is invoked by the framework after callbacks have been run. The callbacks available are: before_processing, after_processing, and around_processing. The primary use case is ensure certain preconditions to processing are fulfilled using before_processing callbacks.
