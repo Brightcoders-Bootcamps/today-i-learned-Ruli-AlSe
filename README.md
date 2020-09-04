@@ -199,3 +199,13 @@ Dispatch functionality is activated by default and Action View rendering is impl
   - **TLS redirect:** Permanently redirects http:// requests to https:// with the same URL host, path, etc. Enabled by default. Set config.ssl_options to modify the destination URL.
   - **Secure cookies:** Sets the secure flag on cookies to tell browsers they must not be sent along with http:// requests. Enabled by default.
   - **HTTP Strict Transport Security (HSTS):** Tells the browser to remember this site as TLS-only and automatically redirect non-TLS requests.
+
+## Wed September 2, 2020 *[ ActionDispatch part 8 ]*
+- **Session:** Has following modules...
+  - **CacheStore:** A session store that uses an ActiveSupport::Cache::Store to store the sessions. This store is most useful if you don't store critical data in your sessions and you don't need them to live for extended periods of time.
+  - **CookieStore:** This cookie-based session store is the Rails default. It is dramatically faster than the alternatives.
+  Sessions typically contain at most a user_id and flash message; both fit within the 4K cookie size limit. A CookieOverflow exception is raised if you attempt to store more than 4K of data.
+  - **MemCacheStore:** A session store that uses MemCache to implement storage.
+- **ShowExceptions:** This middleware rescues any exception returned by the application and calls an exceptions app that will wrap it in a format for the end user.
+  The exceptions app should be passed as parameter on initialization of ShowExceptions. Every time there is an exception, ShowExceptions will store the exception in env, rewrite the PATH_INFO to the exception status code and call the Rack app.
+
