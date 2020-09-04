@@ -209,3 +209,6 @@ Dispatch functionality is activated by default and Action View rendering is impl
 - **ShowExceptions:** This middleware rescues any exception returned by the application and calls an exceptions app that will wrap it in a format for the end user.
   The exceptions app should be passed as parameter on initialization of ShowExceptions. Every time there is an exception, ShowExceptions will store the exception in env, rewrite the PATH_INFO to the exception status code and call the Rack app.
 
+## Thu September 3, 2020 *[ ActionDispatch part 9 ]*
+- **Static:** This middleware will attempt to return the contents of a file's body from disk in the response. If a file is not found on disk, the request will be delegated to the application stack. This middleware is commonly initialized to serve assets from a server's public/ directory.
+- **TestResponse:** Integration test methods such as ActionDispatch::Integration::Session#get and ActionDispatch::Integration::Session#post return objects of class TestResponse, which represent the HTTP response results of the requested controller actions.
