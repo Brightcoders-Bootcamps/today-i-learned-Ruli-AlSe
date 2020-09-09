@@ -215,3 +215,15 @@ Dispatch functionality is activated by default and Action View rendering is impl
 
 ## Fri September 4, 2020 *[ ActionMailbox part 1 ]*
 - **Base:** The base class for all application mailboxes. Not intended to be inherited from directly. Inherit from ApplicationMailbox instead, as that's where the app-specific routing is configured. Application mailboxes need to overwrite the #process method, which is invoked by the framework after callbacks have been run. The callbacks available are: before_processing, after_processing, and around_processing. The primary use case is ensure certain preconditions to processing are fulfilled using before_processing callbacks.
+
+# Week 8
+
+## Mon September 8, 2020 *[ ActionMailbox part 2 ]*
+- **InboundEmail:** The InboundEmail is an Active Record that keeps a reference to the raw email stored in Active Storage and tracks the status of processing. By default, incoming emails will go through the following lifecycle:
+  - **Pending:** Just received by one of the ingress controllers and scheduled for routing.
+  - **Processing:** During active processing, while a specific mailbox is running its process method.
+  - **Delivered:** Successfully processed by the specific mailbox.
+  - **Failed:** An exception was raised during the specific mailbox's execution of the #process method.
+  - **Bounced:** Rejected processing by the specific mailbox and bounced to sender.
+
+  Once the InboundEmail has reached the status of being either delivered, failed, or bounced, it'll count as having been #processed?. Once processed, the InboundEmail will be scheduled for automatic incineration at a later point.
