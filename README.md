@@ -227,3 +227,10 @@ Dispatch functionality is activated by default and Action View rendering is impl
   - **Bounced:** Rejected processing by the specific mailbox and bounced to sender.
 
   Once the InboundEmail has reached the status of being either delivered, failed, or bounced, it'll count as having been #processed?. Once processed, the InboundEmail will be scheduled for automatic incineration at a later point.
+
+## Tue September 9, 2020 *[ ActionMailbox part 3 ]*
+- **IncinerationJob:** You can configure when this IncinerationJob will be run as a time-after-processing using the config.action_mailbox.incinerate_after or ActionMailbox.incinerate_after setting.
+
+  Since this incineration is set for the future, it'll automatically ignore any InboundEmails that have already been deleted and discard itself if so.
+- **Router:** Encapsulates the routes that live on the ApplicationMailbox and performs the actual routing when an inbound_email is received.
+  - **Route:** Encapsulates a route, which can then be matched against an inbound_email and provide a lookup of the matching mailbox class. See examples for the different route addresses and how to use them in the ActionMailbox::Base documentation.
